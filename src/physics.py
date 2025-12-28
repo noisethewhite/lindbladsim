@@ -1,16 +1,11 @@
+from .params import Params
+from .types import F64Array, FloatArray, TimeVector, FloatMatrix, ComplexArray, ComplexVector
 from typing import Callable, Optional, Sequence, \
-    Tuple, Union, TypeVar, TypeAlias, Any, Protocol
-from .params import Params, F64Array
+    Tuple, Union, TypeVar, Any, Protocol
 import numpy as np
-from numpy.typing import NDArray
 from scipy.integrate import solve_ivp as solve_ivp_untyped # pyright: ignore[reportMissingTypeStubs, reportUnknownVariableType]
 
 
-FloatArray: TypeAlias = NDArray[np.floating]
-ComplexArray: TypeAlias = NDArray[np.complexfloating[Any, Any]]
-FloatMatrix: TypeAlias = np.ndarray[tuple[int, int], np.dtype[np.floating]]
-TimeVector = np.ndarray[tuple[int], np.dtype[np.floating]]
-ComplexVector = np.ndarray[tuple[int], np.dtype[np.complexfloating[Any, Any]]]
 _TF64Array = TypeVar("_TF64Array", bound=F64Array)
 
 

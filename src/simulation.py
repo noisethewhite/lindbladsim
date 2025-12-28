@@ -1,9 +1,11 @@
-import numpy as np
 from .params import Params
-from .physics import FloatArray, hamiltonian, solve_ivp, liouvillian
+from .types import FloatArray
+from .physics import hamiltonian, solve_ivp, liouvillian
+import numpy as np
 
 
 def run_simulation(kappa: float, params: Params) -> tuple[FloatArray, FloatArray]:
+
     H = hamiltonian(params.gamma, params.nodes, params.v_pot)
 
     # Начальное состояние: локализация в узле 0 (|0><0|)

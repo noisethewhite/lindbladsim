@@ -1,11 +1,8 @@
+from .types import F64Array
 from dataclasses import dataclass
 import numpy as np
-from numpy.typing import NDArray
-from typing import TypeAlias, Self
+from typing import Self
 from functools import cached_property
-
-
-F64Array: TypeAlias = NDArray[np.float64]
 
 
 @dataclass(frozen=True)
