@@ -1,6 +1,7 @@
 from .simulation import run_simulation
 from .physics import run_classical_random_walk
 from .params import Params
+from .greek import Greek
 
 
-__all__ = ["run_simulation", "run_classical_random_walk", "Params"]
+__all__ = ["run_simulation", "run_classical_random_walk", "Params", "Greek"]

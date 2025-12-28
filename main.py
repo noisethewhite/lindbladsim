@@ -1,4 +1,4 @@
-from src import run_classical_random_walk, run_simulation, Params
+from src import run_classical_random_walk, run_simulation, Params, Greek
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -45,8 +45,8 @@ p_crw, ev_crw = run_classical_random_walk(params)
 
 # --- Figure 2: P_success(t) ---
 plt.figure(figsize=(8, 5))
-plt.plot(params.times, p_coh, label='Coherent ($κ=0$)', linestyle='--', color='blue')
-plt.plot(params.times, p_qrn, label='QRN Netting ($κ=1$)', linewidth=3, color='green')
+plt.plot(params.times, p_coh, label=f'Coherent (${Greek.KAPPA}=0$)', linestyle='--', color='blue')
+plt.plot(params.times, p_qrn, label=f'QRN Netting (${Greek.KAPPA}=1$)', linewidth=3, color='green')
 plt.plot(params.times, p_crw, label='Classical RW', linestyle=':', color='gray')
 plt.title('Figure 2: Targeting Probability $P_{success}(t)$')
 plt.xlabel('Time (a.u.)')
@@ -58,8 +58,8 @@ print("Figure 2 saved.")
 
 # --- Figure 3: Expected Potential E[V](t) ---
 plt.figure(figsize=(8, 5))
-plt.plot(params.times, ev_coh, label='Coherent ($κ=0$)', linestyle='--', color='blue')
-plt.plot(params.times, ev_qrn, label='QRN Netting ($κ=1$)', linewidth=3, color='green')
+plt.plot(params.times, ev_coh, label=f'Coherent (${Greek.KAPPA}=0$)', linestyle='--', color='blue')
+plt.plot(params.times, ev_qrn, label=f'QRN Netting (${Greek.KAPPA}=1$)', linewidth=3, color='green')
 # Опционально добавим CRW, хотя в описании Fig 3 акцент на kappa=0 vs kappa=1
 plt.plot(params.times, ev_crw, label='Classical RW', linestyle=':', color='gray', alpha=0.7)
 plt.title('Figure 3: Expected Potential $E[V](t)$ (Free Energy Proxy)')
@@ -92,8 +92,8 @@ plt.imshow(heatmap_data, origin='lower', aspect='auto', cmap='viridis',
            extent=[gammas.min(), gammas.max(), kappas.min(), kappas.max()])
 plt.colorbar(label='$P_{success}(T=20)$')
 plt.title('Figure 4: ENAQT Region (Optimization landscape)')
-plt.xlabel('Diffusion Strength $\gamma$')
-plt.ylabel('Dephasing Rate $κ$')
+plt.xlabel(f'Diffusion Strength ${Greek.GAMMA}$')
+plt.ylabel(f'Dephasing Rate ${Greek.KAPPA}$')
 plt.axhline(y=1.0, color='white', linestyle='--', alpha=0.5, label='Slice for Figs 2-3')
 plt.legend(loc='upper right')
 plt.savefig('Figure_4_Heatmap.png', dpi=300)
